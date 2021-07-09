@@ -1,0 +1,12 @@
+## mako
+## This throws an error on purpose.
+
+<%page expression_filter="h"/>
+<%inherit file="../main.html" />
+<%namespace name='static' file='../static_content.html'/>
+
+<%block name="content">
+    <div class="course-view page-content-container" id="course-container">
+        <%! raise RuntimeError('This mako template should throw an error') %>
+    </div>
+</%block>

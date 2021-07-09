@@ -3,9 +3,10 @@ openedx_errors Django application initialization.
 """
 
 from django.apps import AppConfig
+from openedx.core.djangoapps.plugins.constants import PluginURLs, ProjectType
 
 
-class OpenedxErrorConfig(AppConfig):
+class OpenedxErrorsConfig(AppConfig):
     """
     Configuration for the openedx_errors Django application.
     """
@@ -13,11 +14,16 @@ class OpenedxErrorConfig(AppConfig):
     name = 'openedx_errors'
 
     plugin_app = {
-        'url_config': {
-            'lms.djangoapp': {
-                'namespace': u'openedx_errors',
-                'regex': u'^',
-                'relative_path': u'urls',
-            }
-        }
+        PluginURLs.CONFIG: {
+            ProjectType.LMS: {
+                PluginURLs.NAMESPACE: '',
+                PluginURLs.REGEX: '^',
+                PluginURLs.RELATIVE_PATH: 'urls',
+            },
+            ProjectType.CMS: {
+                PluginURLs.NAMESPACE: '',
+                PluginURLs.REGEX: '^',
+                PluginURLs.RELATIVE_PATH: 'urls',
+            },
+        },
     }
