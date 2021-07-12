@@ -5,8 +5,6 @@ openedx_errors Django application initialization.
 from django.apps import AppConfig
 from openedx.core.djangoapps.plugins.constants import PluginURLs, ProjectType
 
-from .hacks import add_beeline_instruments_to_middlewares
-
 
 class OpenedxErrorsConfig(AppConfig):
     """
@@ -29,6 +27,3 @@ class OpenedxErrorsConfig(AppConfig):
             },
         },
     }
-
-    def ready(self):
-        add_beeline_instruments_to_middlewares()
